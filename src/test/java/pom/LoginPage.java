@@ -10,7 +10,8 @@ public class LoginPage extends BasePage {
     protected String dashboardPageTitle = "//header/div[1]/div[1]//span";
     protected String errorLabelUsername = "//form/div[1]//span[text()='Required']";
     protected String errorLabelPassword = "//form/div[2]//span[text()='Required']";
-
+    protected String Test = "";
+    
     public void inputUsername(String input) {
         sendText(By.name(textAreaUsername), input);
     }
