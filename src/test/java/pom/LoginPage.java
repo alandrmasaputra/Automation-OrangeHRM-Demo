@@ -11,6 +11,7 @@ public class LoginPage extends BasePage {
     protected String errorLabelUsername = "//form/div[1]//span[text()='Required']";
     protected String errorLabelPassword = "//form/div[2]//span[text()='Required']";
     protected String Test = "";
+    //add comment
     
     public void inputUsername(String input) {
         sendText(By.name(textAreaUsername), input);
