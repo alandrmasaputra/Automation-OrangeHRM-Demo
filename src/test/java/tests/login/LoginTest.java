@@ -16,6 +16,7 @@ public class LoginTest extends BaseTest {
         loginPage.clickLogin();
         loginPage.validateValidLogin();
         loginPage.wait(3);
+        loginPage.logOutUser();
     }
 
     @Test (priority = 1)

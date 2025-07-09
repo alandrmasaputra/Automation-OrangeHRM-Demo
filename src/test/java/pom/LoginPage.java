@@ -10,9 +10,9 @@ public class LoginPage extends BasePage {
     protected String dashboardPageTitle = "//header/div[1]/div[1]//span";
     protected String errorLabelUsername = "//form/div[1]//span[text()='Required']";
     protected String errorLabelPassword = "//form/div[2]//span[text()='Required']";
-    protected String Test = "";
-    //add comment
-    
+    protected String dropDownProfile = "//i[@class='oxd-icon bi-caret-down-fill oxd-userdropdown-icon']";
+    protected String logOutButton = "//header[@class='oxd-topbar']//li//ul//li//a[text()='Logout']";
+
     public void inputUsername(String input) {
         sendText(By.name(textAreaUsername), input);
     }
@@ -23,6 +23,11 @@ public class LoginPage extends BasePage {
 
     public void clickLogin() {
         click(By.xpath(buttonContinue));
+    }
+
+    public void logOutUser(){
+        click(By.xpath(dropDownProfile));
+        click(By.xpath(logOutButton));
     }
 
     public void validateInvalidLogin() {
