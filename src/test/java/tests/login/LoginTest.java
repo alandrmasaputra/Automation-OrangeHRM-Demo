@@ -5,10 +5,25 @@ import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
     String username = "Admin";
+    String invalidUsername = "InvalidUsername";
     String password = "admin123";
-    @Test
-    public void validLoginTest(){
-        loginPage.inputUserNameAndPassword(username,password);
+    String invalidPassword = "awsalah123";
+
+    @Test (priority = 2)
+    public void validLoginTest() {
+        loginPage.inputUsername(username);
+        loginPage.inputPassword(password);
+        loginPage.clickLogin();
+        loginPage.validateValidLogin();
+        loginPage.wait(3);
+    }
+
+    @Test (priority = 1)
+    public void invalidLoginTest(){
+        loginPage.inputUsername(invalidUsername);
+        loginPage.inputPassword(invalidPassword);
+        loginPage.clickLogin();
+        loginPage.validateInvalidLogin();
         loginPage.wait(3);
     }
 }
