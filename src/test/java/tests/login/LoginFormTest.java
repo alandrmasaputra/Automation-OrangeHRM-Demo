@@ -10,26 +10,23 @@ public class LoginFormTest extends BaseTest {
     @Test(priority = 1)
     public void usernamePasswordEmpty() {
         loginPage.clickLogin();
-        loginPage.wait(3);
         loginPage.validateNullUsername();
         loginPage.validateNullPassword();
-        loginPage.refreshPage();
     }
 
     @Test(priority = 2)
     public void usernameEmpty() {
+        loginPage.refreshPage();
         loginPage.inputPassword(password);
         loginPage.clickLogin();
-        loginPage.wait(3);
         loginPage.validateNullUsername();
-        loginPage.refreshPage();
     }
 
     @Test(priority = 3)
     public void passwordEmpty() {
+        loginPage.refreshPage();
         loginPage.inputUsername(username);
         loginPage.clickLogin();
-        loginPage.wait(3);
         loginPage.validateNullPassword();
     }
 }

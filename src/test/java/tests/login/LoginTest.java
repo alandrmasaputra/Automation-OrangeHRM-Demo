@@ -15,16 +15,14 @@ public class LoginTest extends BaseTest {
         loginPage.inputPassword(password);
         loginPage.clickLogin();
         loginPage.validateValidLogin();
-        loginPage.wait(3);
-        loginPage.logOutUser();
     }
 
     @Test (priority = 1)
     public void invalidLoginTest(){
+        loginPage.refreshPage();
         loginPage.inputUsername(invalidUsername);
         loginPage.inputPassword(invalidPassword);
         loginPage.clickLogin();
         loginPage.validateInvalidLogin();
-        loginPage.wait(3);
     }
 }
