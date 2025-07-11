@@ -35,7 +35,7 @@ public class LoginPage extends BasePage {
     }
 
     public void validateValidLogin() {
-        validateElementShow(By.xpath(dashboardPageTitle)); //TODO
+        validateElementShow(By.xpath(dashboardPageTitle));
     }
 
     public void validateNullUsername() {

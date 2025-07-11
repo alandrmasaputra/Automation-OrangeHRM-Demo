@@ -4,7 +4,6 @@ import configuration.DriverManager;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -20,6 +19,7 @@ public class PrintUtilities {
     }
 
     public static String screenCapture(String methodName) throws IOException {
+        GeneralUtilities.wait(3);
         File scrFile = ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.FILE);
 
         String fileName = methodName + "-" + GeneralUtilities.generateTimeNow(1) + ".png";

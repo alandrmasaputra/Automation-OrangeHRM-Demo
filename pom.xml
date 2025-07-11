@@ -4,12 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.aleph.id.automation.prodia.admin</groupId>
-    <artifactId>prodia-admin-app-java</artifactId>
+    <groupId>org.alan.project.orangehrm.demo</groupId>
+    <artifactId>orangehrm-demo-automation</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <testng.xml>src/main/resources/suites/testng.xml</testng.xml>
+        <testng.xml>src/test/resources/suites/testng.xml</testng.xml>
     </properties>
 
     <build>
