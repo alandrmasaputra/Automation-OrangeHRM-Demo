@@ -12,6 +12,22 @@ public class LoginPage extends BasePage {
     protected String errorLabelPassword = "//form/div[2]//span[text()='Required']";
     protected String dropDownProfile = "//i[@class='oxd-icon bi-caret-down-fill oxd-userdropdown-icon']";
     protected String logOutButton = "//header[@class='oxd-topbar']//li//ul//li//a[text()='Logout']";
+    protected String forgotPasswordButton = "//form/div/p";
+    protected String cancelForgotPassword = "//div/button[1]";
+    protected String resetPasswordButton = "//div/button[2]";
+    protected String labelSuccessResetPassword = "//div/h6";
+
+    public void clickForgotPassword() {
+        click(By.xpath(forgotPasswordButton));
+    }
+
+    public void cancelResetPassword() {
+        click(By.xpath(cancelForgotPassword));
+    }
+
+    public void clickResetPassword() {
+        click(By.xpath(resetPasswordButton));
+    }
 
     public void inputUsername(String input) {
         sendText(By.name(textAreaUsername), input);
@@ -25,9 +41,13 @@ public class LoginPage extends BasePage {
         click(By.xpath(buttonContinue));
     }
 
-    public void logOutUser(){
+    public void logOutUser() {
         click(By.xpath(dropDownProfile));
         click(By.xpath(logOutButton));
+    }
+
+    public void validateResetPasswordLinkSent() {
+        validateElementShow(By.xpath(labelSuccessResetPassword));
     }
 
     public void validateInvalidLogin() {
