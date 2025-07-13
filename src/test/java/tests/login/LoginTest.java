@@ -9,7 +9,7 @@ public class LoginTest extends BaseTest {
     String password = "admin123";
     String invalidPassword = "awsalah123";
 
-    @Test (priority = 2)
+    @Test(priority = 2)
     public void validLoginTest() {
         loginPage.inputUsername(username);
         loginPage.inputPassword(password);
@@ -17,8 +17,8 @@ public class LoginTest extends BaseTest {
         loginPage.validateValidLogin();
     }
 
-    @Test (priority = 1)
-    public void invalidLoginTest(){
+    @Test(priority = 1)
+    public void invalidLoginTest() {
         loginPage.refreshPage();
         loginPage.inputUsername(invalidUsername);
         loginPage.inputPassword(invalidPassword);
