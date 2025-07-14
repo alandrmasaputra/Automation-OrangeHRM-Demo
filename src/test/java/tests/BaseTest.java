@@ -13,6 +13,7 @@ import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.*;
 import pom.LoginPage;
+import pom.NavigationBar.NavigationPage;
 import utilities.GeneralUtilities;
 import utilities.PrintUtilities;
 
@@ -31,6 +32,7 @@ public class BaseTest {
     protected static ExtentTest node;
 
     protected LoginPage loginPage;
+    protected NavigationPage navigationPage;
 
     @BeforeTest
     public void setup() {
@@ -65,6 +67,7 @@ public class BaseTest {
         ITestResult itr = Reporter.getCurrentTestResult();
 
         loginPage = new LoginPage();
+        navigationPage = new NavigationPage();
 
         driver.get(DefaultSetting.WEB_URL);
         test = extent.createTest(itr.getInstance().getClass().getSimpleName());
