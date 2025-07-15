@@ -24,10 +24,11 @@ public class TopBarNavigation extends BasePage {
     }
 
     public void clickUpgrade (){
-        String originalWindow = driver.getWindowHandle();
+        String originalWindow = driver.getWindowHandle(); // save original tab
 
         click(By.xpath(upgradeButton));
 
+        // switch to new tab open before validate to get new URL
         for (String windowHandle : driver.getWindowHandles()) {
             if (!windowHandle.equals(originalWindow)) {
                 driver.switchTo().window(windowHandle);
@@ -35,10 +36,11 @@ public class TopBarNavigation extends BasePage {
             }
         }
 
+        // Validate the link opened
         validateNewURL("https://orangehrm.com/open-source/upgrade-to-advanced");
 
         driver.close();
-        driver.switchTo().window(originalWindow);
+        driver.switchTo().window(originalWindow); // switch to original tab
     }
 
     public void validateNewURL (String expectedUrlPart){
