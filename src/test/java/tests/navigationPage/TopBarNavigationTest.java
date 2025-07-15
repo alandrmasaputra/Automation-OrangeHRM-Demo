@@ -10,18 +10,23 @@ public class TopBarNavigationTest extends BaseTest {
     }
 
     @Test(priority = 2)
-    public void clickSupportButton(){
+    public void clickSupportButton() {
         topBarNavigation.closeButtonPopUp();
         topBarNavigation.clickSupport();
     }
 
     @Test(priority = 3)
-    public void clickChangePasswordButton(){
+    public void clickChangePasswordButton() {
         topBarNavigation.clickChangePassword();
     }
 
     @Test(priority = 4)
-    public void clickLogOutButton(){
+    public void upgradeButton() {
+        topBarNavigation.clickUpgrade();
+    }
+
+    @Test(priority = 5)
+    public void clickLogOutButton() {
         topBarNavigation.clickLogOut();
     }
 }

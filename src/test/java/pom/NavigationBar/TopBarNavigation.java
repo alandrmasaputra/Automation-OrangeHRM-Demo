@@ -13,11 +13,38 @@ public class TopBarNavigation extends BasePage {
     protected String closePopUpButton = "//div[@role= 'document']/button";
     protected String supportPage = "//div[@class= 'orangehrm-support']/div/div/p/a";
     protected String changePasswordPage = "//form[@class = 'oxd-form']";
+    protected String upgradeButton = "//header/div/div[2]/a/button";
 
     public void clickAbout (){
         click(By.xpath(dropDownProfile));
         click(By.xpath(aboutButton));
         validateElementShow(By.xpath(popUpAbout));
+    }
+
+    public void clickUpgrade (){
+        String originalWindow = driver.getWindowHandle(); // save original tab
+
+        click(By.xpath(upgradeButton));
+
+        // switch to new tab open before validate to get new URL
+        for (String windowHandle : driver.getWindowHandles()) {
+            if (!windowHandle.equals(originalWindow)) {
+                driver.switchTo().window(windowHandle);
+                break;
+            }
+        }
+
+        // Validate the link opened
+        validateNewURL("https://orangehrm.com/open-source/upgrade-to-advanced");
+
+        driver.close();
+        driver.switchTo().window(originalWindow); // switch to original tab
+    }
+
+    public void validateNewURL (String expectedUrlPart){
+        String currentUrl = driver.getCurrentUrl();
+        System.out.println("URL tab baru: " + currentUrl);
+        assertTrue(currentUrl.contains(expectedUrlPart));
     }
 
     public void closeButtonPopUp (){
