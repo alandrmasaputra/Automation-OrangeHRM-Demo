@@ -13,8 +13,8 @@ import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.*;
 import pom.LoginPage;
-import pom.NavigationBar.NavigationPage;
-import utilities.GeneralUtilities;
+import pom.NavigationBar.SideBarNavigation;
+import pom.NavigationBar.TopBarNavigation;
 import utilities.PrintUtilities;
 
 import java.io.IOException;
@@ -32,7 +32,8 @@ public class BaseTest {
     protected static ExtentTest node;
 
     protected LoginPage loginPage;
-    protected NavigationPage navigationPage;
+    protected SideBarNavigation navigationPage;
+    protected TopBarNavigation topBarNavigation;
 
     @BeforeTest
     public void setup() {
@@ -67,7 +68,8 @@ public class BaseTest {
         ITestResult itr = Reporter.getCurrentTestResult();
 
         loginPage = new LoginPage();
-        navigationPage = new NavigationPage();
+        navigationPage = new SideBarNavigation();
+        topBarNavigation = new TopBarNavigation();
 
         driver.get(DefaultSetting.WEB_URL);
         test = extent.createTest(itr.getInstance().getClass().getSimpleName());
