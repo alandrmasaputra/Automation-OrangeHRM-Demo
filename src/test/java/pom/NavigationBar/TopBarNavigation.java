@@ -3,6 +3,8 @@ package pom.NavigationBar;
 import org.openqa.selenium.By;
 import pom.BasePage;
 
+import java.util.Set;
+
 public class TopBarNavigation extends BasePage {
     protected String dropDownProfile = "//i[@class='oxd-icon bi-caret-down-fill oxd-userdropdown-icon']";
     protected String aboutButton = "//header[@class='oxd-topbar']//li//ul//li//a[text()='About']";
@@ -13,11 +15,36 @@ public class TopBarNavigation extends BasePage {
     protected String closePopUpButton = "//div[@role= 'document']/button";
     protected String supportPage = "//div[@class= 'orangehrm-support']/div/div/p/a";
     protected String changePasswordPage = "//form[@class = 'oxd-form']";
+    protected String upgradeButton = "//header/div/div[2]/a/button";
 
     public void clickAbout (){
         click(By.xpath(dropDownProfile));
         click(By.xpath(aboutButton));
         validateElementShow(By.xpath(popUpAbout));
+    }
+
+    public void clickUpgrade (){
+        String originalWindow = driver.getWindowHandle();
+
+        click(By.xpath(upgradeButton));
+
+        for (String windowHandle : driver.getWindowHandles()) {
+            if (!windowHandle.equals(originalWindow)) {
+                driver.switchTo().window(windowHandle);
+                break;
+            }
+        }
+
+        validateNewURL("https://orangehrm.com/open-source/upgrade-to-advanced");
+
+        driver.close();
+        driver.switchTo().window(originalWindow);
+    }
+
+    public void validateNewURL (String expectedUrlPart){
+        String currentUrl = driver.getCurrentUrl();
+        System.out.println("URL tab baru: " + currentUrl);
+        assertTrue(currentUrl.contains(expectedUrlPart));
     }
 
     public void closeButtonPopUp (){
