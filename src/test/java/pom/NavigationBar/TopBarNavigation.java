@@ -3,8 +3,6 @@ package pom.NavigationBar;
 import org.openqa.selenium.By;
 import pom.BasePage;
 
-import java.util.Set;
-
 public class TopBarNavigation extends BasePage {
     protected String dropDownProfile = "//i[@class='oxd-icon bi-caret-down-fill oxd-userdropdown-icon']";
     protected String aboutButton = "//header[@class='oxd-topbar']//li//ul//li//a[text()='About']";
