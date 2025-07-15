@@ -1,6 +1,7 @@
 package pom;
 
 import org.openqa.selenium.By;
+import utilities.GeneralUtilities;
 
 public class LoginPage extends BasePage {
     protected String textAreaUsername = "username";
@@ -55,7 +56,8 @@ public class LoginPage extends BasePage {
     }
 
     public void validateValidLogin() {
-        validateElementShow(By.xpath(dashboardPageTitle));
+        System.out.println("Validate login will direct to Dashboard");
+        assertTrue(GeneralUtilities.validateArraysContainsString(getTexts(By.xpath(dashboardPageTitle)), "Dashboard"));
     }
 
     public void validateNullUsername() {
