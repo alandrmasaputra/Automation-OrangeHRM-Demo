@@ -16,6 +16,7 @@ import pom.LoginPage;
 import pom.NavigationBar.SideBarNavigation;
 import pom.NavigationBar.TopBarNavigation;
 import utilities.PrintUtilities;
+import utilities.ScreenRecorder;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -34,6 +35,8 @@ public class BaseTest {
     protected LoginPage loginPage;
     protected SideBarNavigation navigationPage;
     protected TopBarNavigation topBarNavigation;
+
+    private ScreenRecorder recorder = new ScreenRecorder();
 
     @BeforeTest
     public void setup() {
@@ -83,12 +86,13 @@ public class BaseTest {
     }
 
     @BeforeMethod
-    public void startTestStep(Method method) {
+    public void startTestStep(Method method) throws IOException {
         String methodName = method.getName();
         System.out.println("-----------------------");
         System.out.println("Test " + methodName + " Start");
         System.out.println("-----------------------");
         node = test.createNode(methodName);
+        recorder.startRecording(methodName);
     }
 
     @AfterMethod
@@ -96,6 +100,8 @@ public class BaseTest {
         String methodName = result.getMethod().getMethodName();
         String pathCapture = PrintUtilities.screenCapture(methodName);
         node.info(result.getMethod().getDescription());
+        String videoPath = recorder.stopRecording();
+        node.info("<a href='" + videoPath + "' target='_blank'>Screen Record</a>");
 
         System.out.println("-----------------------");
 
